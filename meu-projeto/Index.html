@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+</head>
+<style>
+    .BigBox{
+        margin-left:30%;
+        width: 40%;
+    }
+    .link{
+        text-align: center;
+    }
+    input[type=reset]{
+        float: inline-end;
+    }
+</style>
+<body>
+<!--Divisão da area inteira-->
+    <div class="BigBox">
+        <fieldset class="Box">
+            <p><img src="ondas.jpg" alt="logo do formulario" height="30px" width="30px"> <h1>Cadastro</h1></p>
+        <form>
+<!--Caixa de informções pessoais-->
+        <fieldset class="PessoalInfo">
+            <legend><h2>Informações Pessoais</h2></legend>
+
+                <p>Nome: <input type="text" placeholder="Nome" id="nome" required/></p>
+                <p>Sobrenome: <input type="text" placeholder="Sobrenome" id="sobrenome" required/></p>
+                <p>Data de Nascimento: <input type="date" id="datanasc" required/></p>
+
+
+                <p>Gênero: <input type="radio" name="genero" value="masculino"/>
+                <label for="masculino">Masculino</label>
+
+                <input type="radio" name="genero" value="feminino"/>
+                <label for="feminino">Feminino</label>
+            
+                <input type="radio" name="genero" value="outros"/>
+                <label for="outros">Outros</label></p>
+
+                <p>Interesses: <input type="checkbox" name="interesse" value="jetski"/>
+                <label for="jetski">Jetski</label>
+            
+                <input type="checkbox" name="interesse" value="canoa"/>
+                <label for="canoa">Canoa</label>
+            
+                <input type="checkbox" name="interesse" value="iati">
+                <label for="iati">Iati</label></p>
+        </fieldset>
+
+<!--Caixa com informações de contato-->
+        <fieldset class="ContactInfo">
+            <legend><h2>Informações de Contato</h2></legend>
+
+                <p>Email: <input type="email" placeholder="Email" id="email" required/>
+                Senha: <input type="password" placeholder="Senha" id="senha" requided/></p>
+                <p>Telefone: <input type="text" placeholder="Telefone" required/></p>
+
+        </fieldset>
+        <p><input type="submit" name="Enviar"/><input type="reset" name="Resetar"/></p>
+        <p class="link"><a href="">Você já esta logado?</a></p>
+        </fieldset>
+        </form>
+    </div>
+</body>
+</html>
