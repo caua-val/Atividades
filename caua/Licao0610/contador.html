@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade</title>
+</head>
+<style>
+    img {
+      width: 300px;
+      height: auto;
+      display: block;
+    }
+    .escondido {
+      display: none;
+    }
+
+    h3 {
+      cursor: pointer;
+      color: #2a4d9b;
+    }
+
+    h3:hover {
+      text-decoration: underline;
+    }
+
+    .resposta {
+      margin-top: 5px;
+      padding: 10px;
+      background-color: #f2f2f2;
+      border-left: 4px solid #2a4d9b;
+    }
+</style>
+<body>
+    <!--Contador-->
+    <fieldset>
+    <legend>Contador</legend>
+    <h2 id="contador">0</h2>
+    <button onclick="incrementar()">Incrementar</button> 
+    <button onclick="resetar()">Resetar</button>
+    </fieldset>
+
+    <!--Saudar Nome-->
+    <fieldset>
+    <legend>Saudar Nome</legend>
+    <input type="text" id="nome" placeholder="Digite seu nome">
+    <button onclick="saudar()">Saudar</button>
+    <p id="mensagem"></p>
+    </fieldset>
+
+    <!--Galeria de imagems-->
+    <fieldset>
+        <legend>Galeria</legend>
+    <img id="galeria" src="" alt="Imagem da galeria">
+
+    <div style="text-align: center;">
+    <button onclick="anterior()">Anterior</button>
+    <button onclick="proximo()">Próximo</button>
+        </div>
+    </fieldset>
+
+    <!--FAQ-->
+    <fieldset>
+        <legend>FAQ</legend>
+    <h3 id="pergunta">O que é DOM?</h3>
+    <div id="resposta" class="resposta escondido">
+    DOM (Document Object Model) é uma interface de programação para documentos HTML e XML. Ele representa a estrutura do documento como uma árvore de objetos, permitindo que linguagens como JavaScript acessem, modifiquem e interajam com os elementos da página.</div>
+    </fieldset>
+
+    <!--Lista de tarefas-->
+    <fieldset>
+        <legend>Lista de tarefas</legend>
+    <input type="text" id="novaTarefa" placeholder="Digite uma nova tarefa">
+    <button onclick="adicionarTarefa()">Adicionar Tarefa</button>
+
+    <ul id="listaTarefas"></ul>
+    </fieldset>
+
+
+
+
+        <script>
+//contador
+        let contador = 0;
+
+        function incrementar() {
+            contador++;
+            document.getElementById('contador').textContent = contador;
+        }
+        function resetar() {
+            contador = 0;
+            document.getElementById('contador').textContent = contador;
+
+        }
+
+//Saudar Nome
+        function saudar() {
+            const nomeDigitado = document.getElementById('nome').value.trim();
+            const paragrafo = document.getElementById('mensagem');
+
+                if (nomeDigitado === "") {
+        paragrafo.textContent = "Por favor, digite seu nome.";
+                } else {
+        paragrafo.textContent = `Olá, ${nomeDigitado}! Seja bem-vindo(a)!`;
+                }
+        }
+
+//Galeria de imagems
+    const imagens = [
+      'https://picsum.photos/id/237/400/300', 
+      'https://picsum.photos/id/238/400/300', 
+      'https://picsum.photos/id/239/400/300',
+      'https://picsum.photos/id/240/400/300'  
+    ];
+
+    let indiceAtual = 0;
+
+    const imgElemento = document.getElementById('galeria');
+    imgElemento.src = imagens[indiceAtual]; 
+
+    function proximo() {
+      indiceAtual++;
+      if (indiceAtual >= imagens.length) {
+        indiceAtual = 0; 
+      }
+      imgElemento.src = imagens[indiceAtual];
+    }
+
+    function anterior() {
+      indiceAtual--;
+      if (indiceAtual < 0) {
+        indiceAtual = imagens.length - 1; 
+      }
+      imgElemento.src = imagens[indiceAtual];
+    }
+
+//FAQ
+    const pergunta = document.getElementById('pergunta');
+    const resposta = document.getElementById('resposta');
+
+    pergunta.addEventListener('click', function () {
+    resposta.classList.toggle('escondido');
+    });
+
+//Lista de tarefas
+    function adicionarTarefa() {
+    const input = document.getElementById('novaTarefa');
+    const textoTarefa = input.value.trim();
+
+    if (textoTarefa === '') {
+        alert('Por favor, digite uma tarefa.');
+        return;
+    }
+
+    const novaLi = document.createElement('li');
+    novaLi.textContent = textoTarefa;
+
+    const lista = document.getElementById('listaTarefas');
+    lista.appendChild(novaLi);
+
+    input.value = ''; 
+    input.focus();    
+    }
+    </script>
+</body>
+</html>
